@@ -1,17 +1,17 @@
 # Integrating with codecov.io
 
-> **tl;dr**: 
-> `nyc --reporter=lcov npm test && npx codecov`
+**tl;dr**: 
+### `npx nyc --reporter=lcov npm test && npx codecov`
 
 [codecov](https://codecov.io/) is a great tool for adding
 coverage reports to your GitHub project, even viewing them inline on GitHub with a browser extension:
 
-Here's how to get `nyc` integrated with codecov and travis-ci.org, assuming you have the `npx` executable (included with npm v5.2 and above):
+Here's how to get `nyc` integrated with codecov and travis-ci.org, assuming you don't have the `npx` executable:
 
 1. add the codecov and nyc dependencies to your module:
 
   ```shell
-  npm install nyc --save-dev
+  npm install codecov nyc --save-dev
   ```
 
 2. update the scripts in your package.json to include these lines:
@@ -19,8 +19,8 @@ Here's how to get `nyc` integrated with codecov and travis-ci.org, assuming you 
   ```json
   {
      "scripts": {
-       "test": "nyc --reporter=lcov mocha ./test/*.js",
-       "coverage": "npx codecov"
+       "test": "nyc --reporter=lcov mocha",
+       "coverage": "codecov"
      }
   }
   ```
